@@ -1,1 +1,24 @@
-m
+// Declare the packages we're going to be combing through
+const packages = document.getElementsByClassName("package module");
+
+// Define the rightclicking context menu to be called
+const rightClick = new Event("contextmenu", {
+  bubbles: true,
+  cancelable: true,
+});
+
+// Create a for loop
+for (const packageElement of packages) {
+	// Right click every element
+  packageElement.dispatchEvent(rightClick);
+	// Define what we will be checking within the new context menu
+  const items = document.getElementsByClassName("context-item");
+// Another for loop, combing through the items within the context menu
+  for (const item of items) {
+	// If we find something that's locked, and can be unlocked
+    if (item.textContent === "Unlock Module") {
+		// we click it
+      item.click();
+    }
+  }
+}
